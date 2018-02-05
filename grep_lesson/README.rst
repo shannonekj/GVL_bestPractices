@@ -106,7 +106,7 @@ Now let's get a bit more serious...navigate into the MiSeq directory::
 
 and take a look with `ls`. Again we see a lot of files.
 
-What if we want to search a particular file for a sequence of interest?
+What if we want to search a particular file for a sequence of interest?::
 
    grep "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq
 
