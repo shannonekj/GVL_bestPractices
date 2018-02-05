@@ -50,26 +50,26 @@ This walks systematically (recursively) through all files underneath '.',
 finds all directories **(type d)**, and prints them (assumed, if not other
 actions).
 
-That's great but what if I want the only want to see the directories directly below the current directory:
+That's great but what if I want the only want to see the directories directly below the current directory::
 
    find * -prune -type d -print
 
-We can easily see how large files are using ls -lah but what if we want to know the size of the directories?:
+We can easily see how large files are using ls -lah but what if we want to know the size of the directories?::
 
    find * -prune -type d -exec du -skh {} \;
 
 
 Magic! Here we select directories with `-type d` and `exec` executes 'du' a command to display the disk usage statistic.
 
-Let's use the find command to see if we have any fastq file:
+Let's use the find command to see if we have any fastq file::
 
    find *R1_001.fastq
 
-Or what if we wanted to see all of the files:
+Or what if we wanted to see all of the files::
 
    find . -type f
 
-What other kind of "types" can we use?:
+What other kind of "types" can we use?::
 
    b       block special
    c       character special
@@ -88,12 +88,12 @@ Grepping within files
 So now we know how to search for files or directories but what if we want to search within a file?
 This is where the tool `grep` comes into play. GREP stands for **G**lobal **R**egular **E**xpression **P**rint.
 
-We can search in one file with the setup:
+We can search in one file with the setup::
 
    cd ../
    grep Hello hello.sh
 
-What if we didn't know that Hello was capitalize––or if we didn't care?:
+What if we didn't know that Hello was capitalize––or if we didn't care?::
 
    grep -i "hElLo" hello.sh
 
@@ -110,44 +110,43 @@ What if we want to search a particular file for a sequence of interest?
 
    grep "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq
 
-Well, that's not too helpful! Can we get a little more out of 'grepping'?? Let's take a look at which lines have our sequence of interest.:
+Well, that's not too helpful! Can we get a little more out of 'grepping'?? Let's take a look at which lines have our sequence of interest.::
 
    grep -n "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq
 
-Well that's still a pile of text––can we see how many lines contain this sequence?:
+Well that's still a pile of text––can we see how many lines contain this sequence?::
 
    grep -n "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq | wc -l
 
 Compared to our original file with 1250 sequences that's quite a bit!
 
-Okay, so now we know that our file contains 717 matches to our sequence of interest let's pull out all the information for each read and put it into a file.:
+Okay, so now we know that our file contains 717 matches to our sequence of interest let's pull out all the information for each read and put it into a file.::
 
    grep -B 1 -A 2 "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq > matches.fastq
 
 Here, the `-B` option captures the specified number of lines Before the line that matches and the `-A` option captures the number of line specified after.	
 
-Or what if we want lines that DON'T match our sequence of interest?:
+Or what if we want lines that DON'T match our sequence of interest?::
 
    grep -v -B 1 -A 2 "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq > matches.fastq
 
 Here the `-v` option inverts our search and gives us all the lines that do not contain our search parameter.
 
-We can also use regular expressions with `grep`:
+We can also use regular expressions with `grep`::
 
    grep -E '^@' F3D0_S188_L001_R1_001.fastq > sequence.list
 
-But we should always be skeptical of our commands... let's see how many sequences we have.:
+But we should always be skeptical of our commands... let's see how many sequences we have.::
 
    wc -l sequence.list
 
 Hmm that's no quite right. Take a look inside with `less`. If we scroll down a bit we can see that we've accidently acquired lines with quality value. 
-Perhaps we can adjust our search by refining the search:
+Perhaps we can adjust our search by refining the search::
 
   grep -E '^@M' F3D0_S188_L001_R1_001.fastq > sequence.list
    wc -l F3D0_S188_L001_R1_001.fastq
 
 Seems about right.
-
 
 
 
