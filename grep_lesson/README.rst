@@ -1,48 +1,31 @@
-Advanced Beginner/Intermediate Shell
+README's, Grep and Finding Things
 ====================================
+###### This lesson has been adapted from C.Titus Brown's Advanced Beginner/Intermediate Shell and Software Carpentry's Unix Lesson
 
 Learning goals:
 
-* expose you to a bunch of syntax around shell use & scripting.
-* show you the proximal possibilities of shell use & scripting.
-* give you some useful tricks!
+* understand and use README files
+* expose you to `grep` and `find`
 * provide fodder for discussion, so please ask questions!
 
 Points to make:
 
-* almost everything we'll do today has existed since 70s or 80s
-  - so pre-Python & R.
 * I use almost everything below on a ~weekly basis.
-* I learn new things every year ('set -e', for example).
-* For me, anything more complicated than what is below => Python
-  (easier to test, handle errors, etc.).
+* I learn new things every all the time ('set -e', for example).
 
-Also note! "Data Therapy" sessions 3-5pm Wed, in the Center for
-Companion Animal Health (Bennett Room, 2nd floor, CCAH).
-Keurig will be provided
 
 -----
 
-We'll starting at the end of `the shell genomics lesson
-<https://github.com/ngs-docs/2015-shell-genomics/blob/gh-pages/README.rst>`__.
+Download and unpack test data::
 
-Make sure you have the test data! Download and unpack::
+   curl -O https://s3-us-west-1.amazonaws.com/dib-training.ucdavis.edu/shell-data.zip
 
-   https://s3-us-west-1.amazonaws.com/dib-training.ucdavis.edu/shell-data.zip
+and navigate tot he 'data/' directory.
 
-and set your current working directory to be the top level dir, 'data/'.
-
-We'll be posting code snippets to::
-
-   https://public.etherpad-mozilla.org/p/2017-jan-adv-beginner-shell
-
-Lisa Cohen will also be talking about HPC qsub scripts:
-
-   https://github.com/ngs-docs/2016-adv-begin-shell-genomics/blob/master/ucd-farm-intro.md
 
 ----
 
-Exploring directory structures
+Exploring directories with find
 ------------------------------
 
 So, if we do 'ls', we see a bunch of stuff.  We didn't create this folder.
@@ -245,7 +228,7 @@ have 'subset.fq' at the end?
 (Work in small groups; start from working code; there are several ways
 to do it, all that matters is getting there.)
 
-Some backtracking
+Globbing
 -----------------
 
 Variables:
