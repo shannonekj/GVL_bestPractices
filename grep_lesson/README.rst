@@ -139,7 +139,7 @@ Here the `-v` option inverts our search and gives us all the lines that do not c
 We can also use regular expressions with `grep`::
 
    grep -E '^@' F3D0_S188_L001_R1_001.fastq > sequence.list
-   sequence.list
+   head sequenced.list
 
 But we should always be skeptical of our commands... let's see how many sequences we have.::
 
