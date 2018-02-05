@@ -6,3 +6,5 @@ Lessons:
     * The Shell - an Introduction
     * Scripting & Work on the Cluster
     * find and grep
+
+For more scripting information please read: http://tldp.org/LDP/abs/html/
