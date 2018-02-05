@@ -31,8 +31,9 @@ Download and unpack test data::
    curl -O https://s3-us-west-1.amazonaws.com/dib-training.ucdavis.edu/shell-data.zip
    unzip shell-data.zip
 
-and navigate to the `data/` directory.
+and navigate to the `data/` directory::
 
+   cd data
 
 ----
 
