@@ -182,9 +182,6 @@ and you can also say::
 
 Editing on the command line:
 
-Most prompts support 'readline'-style editing.  This uses emacs control
-keys.
-
 Type something out; then type CTRL-a.  Now type CTRL-e.  Beginning and end!
 
 Up arrows to recall previous command, left/right arrows, etc.
