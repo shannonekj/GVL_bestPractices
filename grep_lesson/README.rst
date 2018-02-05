@@ -64,6 +64,7 @@ Magic! Here we select directories with `-type d` and `exec` executes 'du' a comm
 
 Let's use the find command to see if we have any fastq file::
 
+   cd MiSeq
    find *R1_001.fastq
 
 Or what if we wanted to see all of the files::
@@ -124,18 +125,21 @@ Compared to our original file with 1250 sequences that's quite a bit!
 Okay, so now we know that our file contains 717 matches to our sequence of interest let's pull out all the information for each read and put it into a file.::
 
    grep -B 1 -A 2 "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq > matches.fastq
+   head matches.fastq
 
 Here, the `-B` option captures the specified number of lines Before the line that matches and the `-A` option captures the number of line specified after.	
 
 Or what if we want lines that DON'T match our sequence of interest?::
 
-   grep -v -B 1 -A 2 "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq > matches.fastq
+   grep -v -B 1 -A 2 "CGTTATCCGGATTTATT" F3D0_S188_L001_R1_001.fastq > NOTmatches.fastq
+   head NOTmatches.fastq
 
 Here the `-v` option inverts our search and gives us all the lines that do not contain our search parameter.
 
 We can also use regular expressions with `grep`::
 
    grep -E '^@' F3D0_S188_L001_R1_001.fastq > sequence.list
+   sequence.list
 
 But we should always be skeptical of our commands... let's see how many sequences we have.::
 
@@ -145,7 +149,7 @@ Hmm that's no quite right. Take a look inside with `less`. If we scroll down a b
 Perhaps we can adjust our search by refining the search::
 
   grep -E '^@M' F3D0_S188_L001_R1_001.fastq > sequence.list
-   wc -l F3D0_S188_L001_R1_001.fastq
+   wc -l sequence.list
 
 Seems about right.
 
