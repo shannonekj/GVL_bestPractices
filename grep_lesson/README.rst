@@ -199,62 +199,6 @@ History tricks::
 * break the task down into multiple commands
 * put commands things in shell scripts, run in serial
 * use intermediate i/o files to figure out what's going on!
-* use echo to debug!
-
-The weird awesomeness that is 'find'
-------------------------------------
-
-The 'find' command is like a whole 'nother world, but it is an awesome one.
-
-Print all files::
-  
-   find . -type f
-
-Print all files w/details::
-
-   find . -type f -ls
-
-Find all files not in git directories::
-
-   find . -name .git -prune -o -type f -print
-
-Find all directories in the current directory::
-
-   find * -prune -type d -print
-
-...and get their disk usage::
-
-   find * -prune -type d -exec du -skh {} \;
-
-Here, '-exec' runs the command specified up until the ``\;``, and replaces
-the {} with the filename.
-
-Same result, different command::
-
-   find . -depth 1 -type d -exec du -skh {} \;
-
-Find all files larger than 100k::
-
-   find . -size +100k -print
-
-Find all files that were changed within the last 10 minutes::
-
-  find . -ctime -10m
-
-(...and do things to them with -exec ;).
-
-Run 'grep -l' to find all files containing the string 'CGTTATCCGGATTTATTGGGTTTA'::
-
-  find . -type f -exec grep -q CGTTATCCGGATTTATTGGGTTTA {} \; -print
-
-(What's the difference between this and 'grep -l CGTTATCCGGATTTATTGGGTTTA *'?)
-
-Note, you can use -a (and) and -o (or), along with ``\(`` and ``\)``,
-to group conditions::
-
-  find . \( \( -type f -size +100k \) -o \( -type f -size -1k \) \)  -print
-  
-...so it's basically all programming...
 
 
 Challenge exercise: how would you copy all files containing a specific string
