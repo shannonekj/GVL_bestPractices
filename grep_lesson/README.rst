@@ -13,14 +13,21 @@ Points to make:
 
 * I use almost everything below on a ~weekly basis.
 * I learn new things every all the time ('set -e', for example).
+-----
 
+First, make sure you have and are in the correct directory. We will make a `work` directory on our Desktop and work within it.
+   cd /Users/pliocene/Desktop
+   mkdir work
+   cd !$
+
+**NOTE:** `!$` calls the last word of the previous command.
 
 -----
 
 Download and unpack test data::
 
    curl -O https://s3-us-west-1.amazonaws.com/dib-training.ucdavis.edu/shell-data.zip
-
+   unzip shell-data.zip
 and navigate tot he 'data/' directory.
 
 
