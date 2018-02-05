@@ -1,8 +1,7 @@
 README's, Grep and Finding Things
 ====================================
 
-This lesson has been adapted from C.Titus Brown's Advanced Beginner/Intermediate Shell and Software Carpentry's Unix Lesson
-"""""""""
+*This lesson has been adapted from C.Titus Brown's Advanced Beginner/Intermediate Shell and Software Carpentry's Unix Lesson*
 
 Learning goals:
 
