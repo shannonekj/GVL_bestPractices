@@ -5,7 +5,7 @@ README's, Grep and Finding Things
 
 Learning goals:
 
-* understand and use README files
+* understand the importance of and use README files
 * expose you to `grep` and `find`
 * provide fodder for discussion, so please ask questions!
 
@@ -13,14 +13,16 @@ Points to make:
 
 * I use almost everything below on a ~weekly basis.
 * I learn new things every all the time ('set -e', for example).
+
 -----
 
-First, make sure you have and are in the correct directory. We will make a `work` directory on our Desktop and work within it.
+First, make sure you have and are in the correct directory. We will make a `work` directory on our Desktop and work within it::
+
    cd /Users/pliocene/Desktop
    mkdir work
    cd !$
 
-**NOTE:** `!$` calls the last word of the previous command.
+NOTE: **!$** calls the last word of the previous command.
 
 -----
 
@@ -28,7 +30,8 @@ Download and unpack test data::
 
    curl -O https://s3-us-west-1.amazonaws.com/dib-training.ucdavis.edu/shell-data.zip
    unzip shell-data.zip
-and navigate tot he 'data/' directory.
+
+and navigate to the `data/` directory.
 
 
 ----
@@ -39,15 +42,53 @@ Exploring directories with find
 So, if we do 'ls', we see a bunch of stuff.  We didn't create this folder.
 How do we figure out what's in it?
 
-Here, 'find' is your first friend::
+First, let's 'find' all of the directories::
 
    find . -type d
 
 This walks systematically (recursively) through all files underneath '.',
-finds all directories (type d), and prints them (assumed, if not other
+finds all directories **(type d)**, and prints them (assumed, if not other
 actions).
 
-We'll come back to 'find' later, when we use it for finding files.
+That's great but what if I want the only want to see the directories directly below the current directory:
+
+   find * -prune -type d -print
+
+We can easily see how large files are using ls -lah but what if we want to know the size of the directories?:
+
+   find * -prune -type d -exec du -skh {} \;
+
+
+Magic! Here we select directories with `-type d` and `exec` executes 'du' a command to display the disk usage statistic.
+
+Let's use the find command to see if we have any fastq file:
+
+   find *R1_001.fastq
+
+Or what if we wanted to see all of the files:
+
+   find . -type f
+
+What other kind of "types" can we use?:
+
+   b       block special
+   c       character special
+   d       directory
+   f       regular file
+   l       symbolic link
+   p       FIFO
+   s       socket
+
+
+
+
+----
+
+
+
+
+
+
 
 ----
 
